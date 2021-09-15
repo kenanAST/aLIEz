@@ -1,4 +1,5 @@
 const ipc = require('electron').ipcRenderer;
+const exec = require('child_process').exec;
 
 
 const errorBtn = document.getElementById("errorBtn");
@@ -14,7 +15,8 @@ sidebar.addEventListener('drop', (event) => {
   
     for (const f of event.dataTransfer.files) {
         // Using the path attribute to get absolute file path
-        main.innerHTML = f.path
+        main.style.textAlign = "left";
+        main.innerHTML = f.path;
     }
 });
   
@@ -37,12 +39,12 @@ sidebar.addEventListener('dragleave', (event) => {
 // }
 
 
-// function mainDisplay(){
-//     exec(cmd, (err, stdout) => 
-//         document.querySelector(".main").innerHTML = (stdout),
-//         console.log(stdout)
-//     );
-//     console.log("Main DIsplay Called")
-// }
+function mainDisplay(){
+    exec(cmd, (err, stdout) => 
+        document.querySelector(".main").innerHTML = (stdout),
+        console.log(stdout)
+    );
+    console.log("Main DIsplay Called")
+}
 
 // mainDisplay();
