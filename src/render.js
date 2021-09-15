@@ -1,8 +1,7 @@
 const ipc = require('electron').ipcRenderer;
-const exec = require('child_process').exec;
+const exec = require('child_process').execSync;
 
 
-const errorBtn = document.getElementById("errorBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.getElementById("display");
 
@@ -12,12 +11,18 @@ const main = document.getElementById("display");
 sidebar.addEventListener('drop', (event) => {
     event.preventDefault();
     event.stopPropagation();
-  
+    let output = ""
     for (const f of event.dataTransfer.files) {
         // Using the path attribute to get absolute file path
         main.style.textAlign = "left";
-        main.innerHTML = f.path;
+        console.log(f.path);
+        console.log("strings " + f.path);
+        output = exec("strings \"" + f.path + "\"", { encoding: 'utf-8' });
+        console.log(output); 
     }
+    output = output.replaceAll("\n", "<br>");
+    console.log(output);
+    main.innerHTML = output;
 });
   
 sidebar.addEventListener('dragover', (e) => {
@@ -42,7 +47,6 @@ sidebar.addEventListener('dragleave', (event) => {
 function mainDisplay(){
     exec(cmd, (err, stdout) => 
         document.querySelector(".main").innerHTML = (stdout),
-        console.log(stdout)
     );
     console.log("Main DIsplay Called")
 }
