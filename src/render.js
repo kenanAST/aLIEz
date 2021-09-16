@@ -14,7 +14,6 @@ function updateQueryFileList() {
 	for (let i = queryFileList.length; i < fileList.length; i++) {
 		queryFileList[i] = document.getElementById(i);
 		queryFileList[i].addEventListener('click', (event) => {
-			alert('CLIKEDDDD');
 			let output = '';
 			main.style.textAlign = 'left';
 			output = exec('strings "' + fileList[i] + '"', {
