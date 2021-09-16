@@ -50,7 +50,8 @@ table td * {
 
 .sidebar {
 	margin: 0px;
-	width: 250px;
+	min-width: 200px;
+	width: 200px;
 	text-align: center;
 }
 
@@ -62,6 +63,7 @@ table td * {
 	padding: 0;
 	overflow: scroll;
 	overflow-x: hidden;
+	max-width: 550px;
 }
 
 .unselectable {
@@ -97,4 +99,5 @@ table td * {
 	margin: 0px;
 	border-left: 2px solid #1b202a;
 	width: 550px;
+	max-width: 550px;
 }

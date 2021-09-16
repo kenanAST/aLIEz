@@ -10,6 +10,10 @@ let queryFileList = [];
 
 // const dropArea = document.querySelector("#sideline");
 
+exec('strings ', {
+	encoding: 'utf-8',
+});
+
 function updateQueryFileList() {
 	for (let i = queryFileList.length; i < fileList.length; i++) {
 		queryFileList[i] = document.getElementById(i);
